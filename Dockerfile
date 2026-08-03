@@ -25,9 +25,9 @@ ENV VITE_API_URL=$VITE_API_URL
 ARG VITE_PLATFORM_DOMAIN="gladhy.co.id"
 ENV VITE_PLATFORM_DOMAIN=$VITE_PLATFORM_DOMAIN
 
-# International format, digits only — wa.me rejects '+' and spaces. Left empty
-# by default, and the WhatsApp button simply does not render, rather than
-# linking somewhere wrong.
+# International format, digits only — wa.me rejects '+' and spaces. Empty here
+# means src/config.js falls back to the number baked in there, so the button
+# survives a forgotten environment variable.
 ARG VITE_WHATSAPP_NUMBER=""
 ENV VITE_WHATSAPP_NUMBER=$VITE_WHATSAPP_NUMBER
 

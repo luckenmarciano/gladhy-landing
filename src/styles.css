@@ -91,7 +91,9 @@ img, svg { display: block; }
 .btn-ghost { color: inherit; border-color: currentColor; opacity: .85; }
 .btn-ghost:hover { opacity: 1; }
 
-.btn-wa { background: #25D366; color: #0A1F14; font-weight: 600; margin-bottom: 28px; }
+/* No bottom margin: the form below already brings 34px, and stacking both left
+   a gap wide enough to read as a missing section. */
+.btn-wa { background: #25D366; color: #0A1F14; font-weight: 600; }
 .btn-wa:hover { background: #1FBA59; }
 
 /* ── Nav ───────────────────────────────────────────────────── */

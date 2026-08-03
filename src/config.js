@@ -13,8 +13,13 @@ export const PLATFORM_DOMAIN = import.meta.env.VITE_PLATFORM_DOMAIN || 'gladhy.c
 // (src/middleware/tenant.js), so it can never collide with an institution.
 export const APP_URL = import.meta.env.VITE_APP_URL || `https://app.${PLATFORM_DOMAIN}`
 
-// International format, digits only — wa.me rejects '+' and spaces.
-export const WHATSAPP_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER || ''
+// International format, digits only — wa.me rejects '+' and spaces, so
+// +62 811-1303-1509 is stored as 6281113031509.
+//
+// The real number is the default rather than an empty string: this is public
+// information, not a secret, and a forgotten environment variable would
+// otherwise remove the contact button from the page without anyone noticing.
+export const WHATSAPP_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER || '6281113031509'
 
 // Same origin in production: Caddy proxies /api on the landing host too, which
 // is what keeps the contact form free of CORS entirely.
