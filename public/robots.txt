@@ -1,0 +1,12 @@
+# Halaman utama boleh diindeks — itu memang gunanya.
+User-agent: *
+Allow: /
+
+# Dokumentasi teknis untuk tim developer. Dibagikan lewat tautan langsung,
+# bukan lewat hasil pencarian: isinya peta kode, model data, dan daftar rute
+# API — berguna bagi yang mengembangkannya, tidak berguna bagi pengunjung yang
+# mencari jasa pelatihan.
+#
+# Ini permintaan, bukan pengamanan. Perayap yang patuh akan melewatinya;
+# siapa pun yang tahu alamatnya tetap bisa membukanya.
+Disallow: /dokumen/
