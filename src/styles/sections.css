@@ -34,16 +34,14 @@
   display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.12fr); gap: 56px; align-items: center;
 }
 .hero-title {
-  font-family: var(--font-display); font-weight: 400;
-  font-size: clamp(48px, 6.4vw, 92px); line-height: 1; letter-spacing: -.025em;
+  font-family: var(--font-display); font-weight: var(--display-weight); letter-spacing: var(--display-track);
+  font-size: clamp(44px, 6vw, 86px); line-height: 1.02; letter-spacing: -.045em;
   margin-top: 26px;
 }
 .hero-title .w { padding-right: .06em; }
 .hw { display: inline-block; animation: word-up 1s var(--ease) both; animation-delay: calc(var(--i) * 120ms + 200ms); }
 .hw.accent {
-  font-style: italic; padding-right: .08em;
-  background: linear-gradient(100deg, var(--amber), var(--orange) 55%, #E0703F);
-  -webkit-background-clip: text; background-clip: text; color: transparent;
+  color: var(--amber);
 }
 .hero-lead { margin-top: 26px; max-width: 52ch; font-size: 17.5px; color: var(--on-dark-2); }
 .hero-actions { margin-top: 36px; display: flex; gap: 12px; flex-wrap: wrap; }
@@ -74,7 +72,7 @@
 }
 .chip strong { display: block; font-weight: 500; }
 .chip small { display: block; font-size: 11.5px; color: var(--on-dark-3); }
-.chip .big { font-family: var(--font-display); font-weight: 400; font-size: 26px; line-height: 1; color: var(--amber); }
+.chip .big { font-family: var(--font-display); font-weight: var(--display-weight); letter-spacing: var(--display-track); font-size: 26px; line-height: 1; color: var(--amber); }
 .chip-ico { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 9px; background: rgba(232, 150, 58, .18); color: var(--amber); flex-shrink: 0; }
 .chip-ico.ok { background: rgba(70, 200, 130, .18); color: #6FE0A6; }
 .chip-qr   { left: -8%; top: -5%; --depth: -34; animation-delay: .9s, 0s; }
@@ -119,7 +117,7 @@
   background: linear-gradient(160deg, #143038, var(--dark-2)); color: #fff;
   box-shadow: 0 30px 60px -24px rgba(8, 26, 30, .8), 0 0 0 1px rgba(255, 255, 255, .08) inset;
 }
-.merge-core strong { font-family: var(--font-display); font-weight: 400; font-size: 23px; margin-top: 8px; }
+.merge-core strong { font-family: var(--font-display); font-weight: var(--display-weight); letter-spacing: var(--display-track); font-size: 23px; margin-top: 8px; }
 .merge-core small { font-size: 12.5px; color: var(--on-dark-2); }
 .merge-ring {
   position: absolute; left: 50%; top: 50%; translate: -50% -50%; z-index: 1;
@@ -265,7 +263,7 @@
 .fv-gain i.hi { background: linear-gradient(var(--orange), var(--brand)); }
 .feature:hover .fv-gain i.hi { transform: scaleY(1.1); }
 .fv-gain small { font-size: 11px; color: var(--text-3); }
-.fv-gain strong { position: absolute; right: 0; top: 0; font-family: var(--font-display); font-weight: 400; font-size: 30px; color: var(--brand); }
+.fv-gain strong { position: absolute; right: 0; top: 0; font-family: var(--font-display); font-weight: var(--display-weight); letter-spacing: var(--display-track); font-size: 30px; color: var(--brand); }
 .fv-chat { display: grid; gap: 8px; font-size: 12.5px; line-height: 1.45; }
 .fv-chat p { margin: 0; padding: 9px 12px; border-radius: 13px; max-width: 92%; color: var(--text); }
 .fv-chat .q { justify-self: end; background: var(--brand); color: #fff; border-bottom-right-radius: 4px; }
@@ -299,7 +297,7 @@
   scroll-snap-align: center;
 }
 .spot-tag { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--amber); font-weight: 500; }
-.spot-copy h3 { font-family: var(--font-display); font-weight: 400; font-size: clamp(25px, 2.6vw, 33px); margin-top: 12px; line-height: 1.12; }
+.spot-copy h3 { font-family: var(--font-display); font-weight: var(--display-weight); letter-spacing: var(--display-track); font-size: clamp(25px, 2.6vw, 33px); margin-top: 12px; line-height: 1.12; }
 .spot-copy p { margin-top: 12px; color: var(--on-dark-2); font-size: 15.5px; }
 .spot-copy ul { margin-top: 18px; display: grid; gap: 8px; font-size: 14.5px; }
 .spot-copy li { position: relative; padding-left: 22px; }
@@ -329,11 +327,11 @@
 
 /* ── Kepercayaan ───────────────────────────────────────────── */
 .trust { padding: 84px 0; border-bottom: 1px solid var(--border); }
-.trust-title { font-family: var(--font-display); font-size: clamp(22px, 2.6vw, 30px); text-align: center; max-width: 30ch; margin: 0 auto; line-height: 1.2; }
+.trust-title { font-family: var(--font-display); font-weight: var(--display-weight); letter-spacing: var(--display-track); font-size: clamp(22px, 2.6vw, 30px); text-align: center; max-width: 30ch; margin: 0 auto; line-height: 1.2; }
 .stats { margin: 48px 0 0; display: grid; grid-template-columns: repeat(4, 1fr); }
 .stat { padding: 4px 24px; text-align: center; border-left: 1px solid var(--border); }
 .stat:first-child { border-left: 0; }
-.stat dd { margin: 0; font-family: var(--font-display); font-size: clamp(44px, 5.4vw, 68px); line-height: 1; color: var(--brand); font-variant-numeric: tabular-nums; }
+.stat dd { margin: 0; font-family: var(--font-display); font-weight: var(--display-weight); letter-spacing: var(--display-track); font-size: clamp(44px, 5.4vw, 68px); line-height: 1; color: var(--brand); font-variant-numeric: tabular-nums; }
 .stat dt { margin-top: 10px; font-size: 14.5px; color: var(--text-2); }
 .clients { margin-top: 60px; text-align: center; }
 .clients p { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--text-3); }
@@ -363,7 +361,7 @@
   position: absolute; top: -13px; left: 50%; translate: -50% 0; white-space: nowrap;
   padding: 4px 14px; border-radius: 99px; background: var(--brand); color: #fff; font-size: 12px; font-weight: 500;
 }
-.plan-name { font-family: var(--font-display); font-weight: 400; font-size: 28px; }
+.plan-name { font-family: var(--font-display); font-weight: var(--display-weight); letter-spacing: var(--display-track); font-size: 28px; }
 .plan-limits { margin: 22px 0 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding-bottom: 22px; border-bottom: 1px solid var(--border); }
 .plan-limits dd { margin: 0; font-size: 25px; font-weight: 600; letter-spacing: -.02em; line-height: 1.1; }
 .plan-limits dt { margin-top: 4px; color: var(--text-3); font-size: 13px; }
@@ -434,7 +432,7 @@
 .form-done { display: grid; justify-items: center; gap: 6px; padding: 40px 12px; text-align: center; animation: rise .6s var(--ease) both; }
 .form-done-ico { display: grid; place-items: center; width: 60px; height: 60px; border-radius: 50%; background: rgba(70, 200, 130, .16); color: #6FE0A6; margin-bottom: 10px; }
 .form-done-ico path { stroke-dasharray: 1; animation: draw .6s .25s var(--ease) both; }
-.form-done strong { font-family: var(--font-display); font-weight: 400; font-size: 26px; }
+.form-done strong { font-family: var(--font-display); font-weight: var(--display-weight); letter-spacing: var(--display-track); font-size: 26px; }
 .form-done span { color: var(--on-dark-2); font-size: 15.5px; }
 /* Honeypot: harus tak terlihat orang tetapi tetap diisi bot — jadi bukan
    display:none, yang sebagian bot justru lewati. */
