@@ -60,13 +60,44 @@ Dua hal yang mudah terlewat, keduanya sudah dijaga di sana:
 - `DOMAIN` wajib. Kosong membuat Caddy menolak seluruh konfigurasi dan semua
   host mati, bukan hanya halaman ini.
 
+## Struktur
+
+\
+Urutan halaman: Hero → Masalah → Alur 3 langkah → Tur produk → Fitur →
+Sorotan → Kepercayaan → Paket → FAQ → Kontak.
+
+## Animasi
+
+Memakai **GSAP + ScrollTrigger** dan **Lenis**, keduanya dimuat belakangan
+lewat  sehingga hero tampil tanpa menunggunya. Tiga aturan yang
+dijaga di seluruh kode:
+
+- **Isi tidak pernah disembunyikan oleh CSS.** Keadaan awal animasi dipasang
+  GSAP. Kalau skripnya gagal dimuat, pengunjung kehilangan gerak, bukan isi.
+- ** dihormati penuh**: tanpa pin, tanpa paralaks,
+  tanpa scroll halus, tanpa putar otomatis.
+- **Pin hanya di layar ≥ 861px.** Di HP, Alur ditumpuk biasa dan Sorotan
+  digeser dengan jari. Lenis hanya aktif untuk mouse/trackpad.
+
+Semua animasi GSAP lewat  di , yang
+membongkarnya sendiri saat komponen lepas atau lebar layar berubah.
+
 ## Menyunting teks
 
-Semua kalimat, kedua bahasa, ada di `src/i18n.js`. Ditaruh berdampingan supaya
+Semua kalimat, kedua bahasa, ada di . Ditaruh berdampingan supaya
 terjemahan yang tertinggal langsung terlihat saat menulis, bukan berbulan-bulan
-kemudian oleh pengunjung.
+kemudian oleh pengunjung. Urutan butir dalam array (langkah, layar tur, fitur,
+sorotan) dipasangkan dengan ikon dan mockup di komponennya.
 
-Angka paket di `src/components/Plans.jsx` menyalin
-`osct_backend/src/config/plans.js`. Kalau batasnya berubah di sana, ubah juga di
+Angka dan fitur paket di  menyalin
+. Kalau berubah di sana, ubah juga di
 sini — mengambilnya lewat API berarti menaruh permintaan jaringan dan satu mode
 kegagalan di depan halaman pemasaran.
+
+## Yang sengaja belum diisi
+
+- **Logo klien**: array  di  kosong, jadi
+  deret logonya tidak dirender. Isi setelah berkas dan izin pakainya ada.
+- **Angka pemakaian** (jumlah lembaga, peserta, sertifikat): bagian Kepercayaan
+  hanya memuat fakta produk. Ganti di  (i18n) bila datanya ada.
+- Mockup memakai nama dan angka contoh; jangan diganti data lembaga sungguhan.

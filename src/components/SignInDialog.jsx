@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { APP_URL, PLATFORM_DOMAIN } from '../config'
+import { lockScroll } from '../motion/lenis'
+import Mark from './Mark'
 
 /**
  * Where "Masuk" leads.
@@ -28,10 +30,10 @@ export default function SignInDialog({ t, onClose }) {
       if (e.key === 'Escape') onClose()
     }
     document.addEventListener('keydown', onKey)
-    document.body.style.overflow = 'hidden'
+    lockScroll(true)
     return () => {
       document.removeEventListener('keydown', onKey)
-      document.body.style.overflow = ''
+      lockScroll(false)
     }
   }, [onClose])
 
@@ -54,6 +56,7 @@ export default function SignInDialog({ t, onClose }) {
     >
       <div className="modal" ref={boxRef} role="dialog" aria-modal="true" aria-label={t.signIn.title}>
         <button className="modal-close" onClick={onClose} aria-label={t.signIn.close}>×</button>
+        <Mark size={34} />
         <h2 className="modal-title">{t.signIn.title}</h2>
         <p className="modal-lead">{t.signIn.lead}</p>
 
