@@ -301,8 +301,9 @@ button { font: inherit; color: inherit; }
 .footer-brand { display: flex; align-items: center; gap: 10px; color: #fff; font-weight: 600; font-size: 18px; }
 .footer-tag { margin-top: 14px; max-width: 34ch; }
 .footer h3 { font-family: var(--font-sans); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--on-dark-3); font-weight: 500; }
-.footer-list { margin-top: 14px; display: grid; gap: 9px; }
-.footer-list a, .footer-list button { background: none; border: 0; padding: 0; cursor: pointer; text-align: left; transition: color .2s; }
+.footer-list { margin-top: 10px; display: grid; gap: 0; }
+/* Tinggi sentuh: tautan setinggi satu baris teks (17px) terlalu kecil untuk jari. */
+.footer-list a, .footer-list button { display: inline-block; background: none; border: 0; padding: 5px 0; cursor: pointer; text-align: left; font: inherit; transition: color .2s; }
 .footer-list a:hover, .footer-list button:hover { color: #fff; }
 .footer-base {
   margin-top: 48px; padding-top: 22px; border-top: 1px solid var(--line-dark);
@@ -312,6 +313,8 @@ button { font: inherit; color: inherit; }
 
 @media (max-width: 720px) {
   .section { padding: 76px 0; }
+  .footer-list a, .footer-list button { padding: 10px 0; }
+  .footer-base a { padding: 10px 0; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .footer-grid > :first-child { grid-column: 1 / -1; }
 }
