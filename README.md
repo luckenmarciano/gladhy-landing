@@ -19,6 +19,40 @@ Backend perlu jalan di `localhost:4000` agar formulir kontak berfungsi.
 melakukan hal yang sama — jadi formulirnya selalu satu origin dengan API dan
 CORS tidak pernah ikut campur.
 
+## Struktur
+
+```
+src/
+  App.jsx            urutan bagian, bahasa, dialog Masuk
+  i18n.js            semua kalimat, dua bahasa
+  config.js          domain, nomor WhatsApp, alamat API
+  data/plans.js      angka paket + daftar logo klien
+  sections/          satu berkas per bagian halaman
+  components/        Nav, Footer, dialog Masuk, logo
+  mockups/           layar aplikasi yang digambar ulang dengan HTML/CSS
+  motion/            pemuat GSAP, scroll halus, reveal, efek kursor
+  styles/            base.css (token & komponen), sections.css, mockups.css
+```
+
+Urutan halaman: Hero → Masalah → Alur 3 langkah → Tur produk → Fitur →
+Sorotan → Kepercayaan → Paket → FAQ → Kontak.
+
+## Animasi
+
+Memakai **GSAP + ScrollTrigger** dan **Lenis**, keduanya dimuat belakangan
+lewat `import()` sehingga hero tampil tanpa menunggunya. Tiga aturan yang
+dijaga di seluruh kode:
+
+- **Isi tidak pernah disembunyikan oleh CSS.** Keadaan awal animasi dipasang
+  GSAP. Kalau skripnya gagal dimuat, pengunjung kehilangan gerak, bukan isi.
+- **`prefers-reduced-motion` dihormati penuh**: tanpa pin, tanpa paralaks,
+  tanpa scroll halus, tanpa putar otomatis.
+- **Pin hanya di layar ≥ 861px.** Di HP, Alur ditumpuk biasa dan Sorotan
+  digeser dengan jari. Lenis hanya aktif untuk mouse/trackpad.
+
+Semua animasi GSAP lewat `useGsap()` di `src/motion/gsap.js`, yang
+membongkarnya sendiri saat komponen lepas atau lebar layar berubah.
+
 ## Konfigurasi
 
 Semuanya lewat env Vite, dibaca di `src/config.js`. Nilai bawaan sudah
@@ -27,7 +61,7 @@ menunjuk produksi, jadi `npm run dev` berjalan tanpa berkas `.env`.
 | Variabel | Arti |
 |---|---|
 | `VITE_PLATFORM_DOMAIN` | Domain induk lembaga. Dialog Masuk menyusun `{slug}.{domain}` darinya. |
-| `VITE_WHATSAPP_NUMBER` | Format internasional, angka saja. Kosong = tombol WhatsApp tidak ditampilkan. |
+| `VITE_WHATSAPP_NUMBER` | Format internasional, angka saja. Kosong = memakai nomor bawaan di `config.js`. |
 | `VITE_API_URL` | Kosongkan di produksi supaya panggilan bersifat relatif. |
 
 ## Pembagian hostname
@@ -60,44 +94,22 @@ Dua hal yang mudah terlewat, keduanya sudah dijaga di sana:
 - `DOMAIN` wajib. Kosong membuat Caddy menolak seluruh konfigurasi dan semua
   host mati, bukan hanya halaman ini.
 
-## Struktur
-
-\
-Urutan halaman: Hero → Masalah → Alur 3 langkah → Tur produk → Fitur →
-Sorotan → Kepercayaan → Paket → FAQ → Kontak.
-
-## Animasi
-
-Memakai **GSAP + ScrollTrigger** dan **Lenis**, keduanya dimuat belakangan
-lewat  sehingga hero tampil tanpa menunggunya. Tiga aturan yang
-dijaga di seluruh kode:
-
-- **Isi tidak pernah disembunyikan oleh CSS.** Keadaan awal animasi dipasang
-  GSAP. Kalau skripnya gagal dimuat, pengunjung kehilangan gerak, bukan isi.
-- ** dihormati penuh**: tanpa pin, tanpa paralaks,
-  tanpa scroll halus, tanpa putar otomatis.
-- **Pin hanya di layar ≥ 861px.** Di HP, Alur ditumpuk biasa dan Sorotan
-  digeser dengan jari. Lenis hanya aktif untuk mouse/trackpad.
-
-Semua animasi GSAP lewat  di , yang
-membongkarnya sendiri saat komponen lepas atau lebar layar berubah.
-
 ## Menyunting teks
 
-Semua kalimat, kedua bahasa, ada di . Ditaruh berdampingan supaya
+Semua kalimat, kedua bahasa, ada di `src/i18n.js`. Ditaruh berdampingan supaya
 terjemahan yang tertinggal langsung terlihat saat menulis, bukan berbulan-bulan
 kemudian oleh pengunjung. Urutan butir dalam array (langkah, layar tur, fitur,
 sorotan) dipasangkan dengan ikon dan mockup di komponennya.
 
-Angka dan fitur paket di  menyalin
-. Kalau berubah di sana, ubah juga di
+Angka dan fitur paket di `src/data/plans.js` menyalin
+`gladhy-backend/src/config/plans.js`. Kalau berubah di sana, ubah juga di
 sini — mengambilnya lewat API berarti menaruh permintaan jaringan dan satu mode
 kegagalan di depan halaman pemasaran.
 
 ## Yang sengaja belum diisi
 
-- **Logo klien**: array  di  kosong, jadi
-  deret logonya tidak dirender. Isi setelah berkas dan izin pakainya ada.
+- **Logo klien**: array `CLIENTS` di `src/data/plans.js` kosong, jadi deret
+  logonya tidak dirender. Isi setelah berkas dan izin pakainya ada.
 - **Angka pemakaian** (jumlah lembaga, peserta, sertifikat): bagian Kepercayaan
-  hanya memuat fakta produk. Ganti di  (i18n) bila datanya ada.
+  hanya memuat fakta produk. Ganti di `trust.stats` (i18n) bila datanya ada.
 - Mockup memakai nama dan angka contoh; jangan diganti data lembaga sungguhan.
